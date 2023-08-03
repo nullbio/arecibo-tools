@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        .grid-pane {
+            max-width: 100%;
+            overflow-x: auto;
+            min-height: 200px; /* Adjust the height as needed */
+        }
+
+        .main-container {
+            max-width: 70%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body class="main-container mt-5">
+    <h1 class="text-center mb-4">Arecibo Grid Generator</h1>
+    <h5 class="text-center centered mb-4">Need to draw a grid or create a sequence from an image?: <a href="drawer/index.html">Arecibo Grid Drawer & Converter Tool</a></h5>
+    <div class="alert alert-success">
+        <h4>What is this?</h4>
+        The <a href="https://en.wikipedia.org/wiki/Arecibo_message" target="_blank">Arecibo Message</a> was a 1974 radio transmission from Earth to the M13 star cluster. It contained 1679 binary digits, which when arranged into a 23x73 grid showed an encoded message. This message was specially designed to communicate with extra-terrestrial life. Read the <a href="https://en.wikipedia.org/wiki/Arecibo_message" target="_blank">Wikipedia page</a> for further info.<br>
+        <br>
+        This Arecibo Grid Generator allows you to input that 1974 binary sequence, or any other binary sequence, to generate an Arecibo-style grid. It also allows you to configure the grid width. Use the auto-fill buttons below for a quick example.
+    </div>
+
+
+    <div class="alert alert-info">
+        <strong>Autofill:</strong> Want to auto-fill with the binary of the <a href="https://en.wikipedia.org/wiki/Arecibo_message" target="_blank">first Arecibo Message</a> from 1974 or the crop-circle <a href="https://en.wikipedia.org/wiki/Arecibo_message" target="_blank">Arecibo Answer</a> from 2001? Click these buttons:
+        <div class="mt-2">
+            <button onclick="autofill1974();" class="btn btn-primary">1974 Arecibo Message</button>
+            <button onclick="autofill2001();" class="btn btn-secondary">2001 Arecibo Answer</button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        Binary String - <small class="form-text text-muted inline mb-2">Provide a binary sequence (011010 for example), or use digits 0-9 (0123456789 for example) for the Greyscale option. If using greyscale digits, don't forget to check the greyscale box.</small>
+        <textarea id="binary" rows="4" class="form-control mb-2" oninput="refreshUI()"></textarea>
+        <small>Current length: <span id="binaryLength"></span></small>
+    </div>
+    <hr>
+    <h5>Settings</h5>
+
+    <div class="mt-4 mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="greyscale" name="greyscale" value="greyscale" onchange="refreshUI()">
+        Enable Greyscale - <small class="form-text text-muted mb-2 inline">Display cells in shades of grey based on the binary string's value. 0 represents 0% black, 1 is 10% black, up to 9 which is 100% black.</small>
+    </div>
+
+    <div class="mb-2">
+        Prime Factors - <small class="form-text text-muted mb-2 inline">The original Arecibo message had 1679 digits with prime factors 23 and 73, hinting at a 23x73 grid. Similarly, other Arecibo messages might use prime factors to indicate the correct grid size. <strong>Click the numbers to set the Grid Line Length:</strong></small>
+        <div id="primeFactors"></div>
+    </div>
+
+    <div class="d-flex align-items-center mb-4">
+        Set your Grid Line Length:
+        &nbsp;<input type="number" id="lineLength" class="form-control mr-2" value="0" oninput="refreshUI()" style="width: 100px;">
+        <button onclick="decrement(); refreshUI()" class="btn btn-danger btn-sm mr-1">Subtract</button>
+        <button onclick="increment(); refreshUI()" class="btn btn-success btn-sm">Add</button>
+    </div>
+    <hr>
+
+    <h4>Generated Arecibo Grids</h4>
+    <p>Standard direction (left), mirrored direction (right):</p>
+
+    <div class="gridContainer row flex-nowrap">
+        <div id="grid" class="col-lg-6 grid-pane"></div>
+        <div id="reverseGrid" class="col-lg-6 grid-pane"></div>
+    </div>
+    <br><br><br>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

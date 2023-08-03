@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arecibo Grid Drawer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="container mt-5">
+    <h1 class="mb-4 text-center">Arecibo Grid Drawer</h1>
+    <h5 class="text-center centered mb-4">Looking for an Arecibo Grid Generator?: <a href="../index.html">Arecibo Grid Generator Tool</a></h5>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Instructions:</h4>
+            <p>First, load your image of the Arecibo grid to use as a background template:</p>
+            <input type="file" class="form-control mb-3" id="imageLoader" name="imageLoader" accept="image/*">
+            <p>You may also need to manually set your Grid Dimensions and press the "Set Grid Dimensions" button if it doesn't align with the default values.</p>
+            <p>Then, click over the top of the image to generate the binary string, by painting in the cells with mouse left-click/drag. The default value is 23x74 because initially this was used to create the binary string for the 2001 Arecibo Answer, which was a 23x74 grid.</p>
+            <p>You can also set your own custom binary sequence to generate the grid from, by pasting it into the "Binary String" textarea and pressing the "Manually Refresh Grid" button.</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Set Grid Dimensions:</h4>
+            <form class="form-inline mb-3">
+                <label for="rowsInput" class="mr-2">Rows:</label>
+                <input type="number" class="form-control mr-3" id="rowsInput" value="23">
+                
+                <label for="colsInput" class="mr-2">Columns:</label>
+                <input type="number" class="form-control mr-3" id="colsInput" value="74">
+                
+                <button type="button" class="btn btn-primary" onclick="setGridDimensions()">Set Grid Dimensions</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Binary String:</h4>
+            <textarea class="form-control mb-3" id="binaryOutput"></textarea>
+            <button class="btn btn-primary" onclick="changeBinaryString()">Manually Refresh Grid</button>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div class="grid" id="gridContainer"></div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
