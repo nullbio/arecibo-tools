@@ -17,8 +17,8 @@ The **Arecibo Grid Drawer** lets users create binary strings based on grid desig
 
 You can access and use these tools directly on Github Pages:
 
-- [**Arecibo Grid Generator Tool**](https://nullbio.github.io/aricebo-tools/generator)
-- [**Arecibo Grid Drawer Tool**](https://nullbio.github.io/aricebo-tools/drawer)
+- [**Arecibo Grid Generator Tool**](https://nullbio.github.io/arecibo-tools/index.html)
+- [**Arecibo Grid Drawer Tool**](https://nullbio.github.io/arecibo-tools/drawer/index.html)
 
 ## Contributing
 
